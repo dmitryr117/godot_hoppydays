@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const SPEED = 1000
-const GRAVITY = 80
+const GRAVITY = 2000
 const UP = Vector2(0, -1)
 const JUMP_SPEED = 1500
 
@@ -15,17 +15,19 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	apply_gravity()
-	move()
+	apply_gravity(delta)
 	jump()
+	move()
 	animate()
 	move_and_slide(motion, UP)
 	
-func apply_gravity():
+func apply_gravity(delta):
 	if is_on_floor():
-		motion.y = 5
+		motion.y = GRAVITY * delta
+	elif is_on_ceiling():
+		motion.y = GRAVITY * delta
 	else:
-		motion.y += GRAVITY
+		motion.y += GRAVITY * delta
 		
 func jump():
 	if Input.is_action_just_pressed('jump') and is_on_floor():
@@ -44,7 +46,7 @@ func move():
 		motion.x = 0
 		
 func animate():
-	emit_signal("animate", motion)
+	emit_signal("animate", motion, is_on_floor())
 	
 
 
