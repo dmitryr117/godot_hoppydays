@@ -1,5 +1,5 @@
 extends Area2D
 
 func _on_SpikeTop_body_entered(body):
-	print('Entered zone')
-	body.hurt()
+	#body.hurt()
+	get_tree().call_group("Gamestate", "hurt")

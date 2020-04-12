@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Hazards/SpikeTop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SFX/Chiptune_Adventures_1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Items/JumpPad.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/GameState.gd" type="Script" id=6]
+[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://NPCs/SpikeMan.tscn" type="PackedScene" id=9]
+[ext_resource path="res://NPCs/Cloud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Items/Portal.tscn" type="PackedScene" id=11]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -23,7 +31,72 @@ position = Vector2( 924.6, 846.949 )
 [node name="SpikeTop2" parent="Hazards" instance=ExtResource( 3 )]
 position = Vector2( 1833.08, 688.016 )
 
+[node name="NPCs" type="Node" parent="."]
+
+[node name="SpikeMan" parent="NPCs" instance=ExtResource( 9 )]
+position = Vector2( 2690.48, 756.266 )
+
+[node name="SpikeMan2" parent="NPCs" instance=ExtResource( 9 )]
+position = Vector2( 3647.51, 1846.4 )
+
+[node name="SpikeMan3" parent="NPCs" instance=ExtResource( 9 )]
+position = Vector2( 2367.24, 2740.05 )
+
+[node name="Cloud" parent="NPCs" instance=ExtResource( 10 )]
+position = Vector2( 3792.67, 929.247 )
+
+[node name="CoinsCluster" type="Node" parent="."]
+
+[node name="Coin" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 1253.42, 625.371 )
+
+[node name="Coin2" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 1343.42, 625.371 )
+
+[node name="Coin3" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 1439.42, 625.371 )
+
+[node name="Coin4" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 1393.98, 532.216 )
+
+[node name="Coin5" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 1289.98, 532.216 )
+
+[node name="Coin6" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 4598.03, 1981.53 )
+
+[node name="Coin7" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 4494.03, 1851.39 )
+
+[node name="Coin8" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 4606.03, 1714.4 )
+
+[node name="Coin9" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 4486.03, 1570.55 )
+
+[node name="Coin10" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 4590.03, 1434.55 )
+
+[node name="Coin11" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 4478.03, 1298.55 )
+
+[node name="Coin12" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 4582.03, 1154.55 )
+
+[node name="Coin13" parent="CoinsCluster" instance=ExtResource( 8 )]
+position = Vector2( 4478.03, 1026.55 )
+
+[node name="JumpPads" type="Node" parent="."]
+
+[node name="JumpPad" parent="JumpPads" instance=ExtResource( 5 )]
+position = Vector2( 4538.69, 2205.9 )
+
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -6.0
 autoplay = true
+
+[node name="GUI" parent="." instance=ExtResource( 7 )]
+
+[node name="Portal" parent="." instance=ExtResource( 11 )]
+position = Vector2( 5871.01, 1138.1 )
