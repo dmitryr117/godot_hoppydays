@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Hazards/SpikeTop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SFX/Chiptune_Adventures_1.ogg" type="AudioStream" id=4]
 
-[node name="Node2D" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -11,4 +13,17 @@
 tile_set = ExtResource( 2 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 524293, 0, 0, 720914, 0, 0, 720920, 0, 0, 917514, 0, 0, 983069, 0, 0, 1179661, 3, 0, 1245203, 3, 0, 1310744, 0, 0, 1703965, 2, 0, 1900553, 3, 0, 1900566, 2, 0, 1966116, 2, 0, 2097166, 2, 0 )
+tile_data = PoolIntArray( 524293, 0, 0, 720914, 0, 0, 720920, 0, 0, 852007, 2, 0, 917514, 0, 0, 983069, 0, 0, 983113, 5, 0, 1179661, 3, 0, 1179690, 2, 0, 1179704, 2, 0, 1310744, 0, 0, 1376339, 5, 0, 1572906, 2, 0, 1572930, 5, 0, 1703965, 2, 0, 1900553, 3, 0, 1900566, 2, 0, 1966116, 2, 0, 1966134, 2, 0, 1966157, 5, 0, 2097166, 2, 0, 2293764, 2, 0, 2293801, 2, 0, 2293828, 5, 0, 2424923, 5, 0, 2490390, 2, 0, 2490446, 5, 0, 2621494, 2, 0, 2687062, 5, 0, 2818055, 2, 0, 2883618, 2, 0, 3145728, 2, 0, 3145734, 2, 0, 3145740, 2, 0, 3145746, 2, 0, 3145752, 2, 0, 3145758, 2, 0, 3145764, 2, 0, 3145770, 2, 0, 3145776, 2, 0, 3145782, 2, 0, 3145788, 2, 0, 3145794, 2, 0, 3145800, 2, 0, 3145806, 2, 0, 3145812, 2, 0, 3145818, 2, 0, 3145824, 2, 0, 3145830, 2, 0 )
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="SpikeTop" parent="Hazards" instance=ExtResource( 3 )]
+position = Vector2( 924.6, 846.949 )
+
+[node name="SpikeTop2" parent="Hazards" instance=ExtResource( 3 )]
+position = Vector2( 1833.08, 688.016 )
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -6.0
+autoplay = true

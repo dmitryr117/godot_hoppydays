@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=1]
+[ext_resource path="res://Levels/GameOver.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://GFX/HUD/lifes.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 109.0
+margin_top = 193.0
+margin_right = 914.0
+margin_bottom = 406.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 805.0
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.92549, 0.596078, 1 )
+text = "GAME OVER!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 131.0
+margin_right = 805.0
+margin_bottom = 213.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="RestartGame" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 179.0
+margin_right = 231.0
+margin_bottom = 82.0
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 261.0
+margin_right = 625.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.976471, 0.603922, 1 )
+text = "Try Again!"
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/RestartGame" to="." method="_on_RestartGame_pressed"]
