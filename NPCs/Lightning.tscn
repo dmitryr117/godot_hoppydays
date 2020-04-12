@@ -23,10 +23,12 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
+self_modulate = Color( 0.752941, 1, 0.67451, 1 )
 frames = SubResource( 1 )
-frame = 1
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Area2D"]
