@@ -90,4 +90,13 @@ volume_db = -4.0
 [node name="PainSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -4.0
+
+[node name="JumpTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.2
+
+[node name="OnGroundTimer" type="Timer" parent="."]
+wait_time = 0.1
 [connection signal="animate" from="." to="PlayerAnimation" method="_on_Player_animate"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
+[connection signal="timeout" from="OnGroundTimer" to="." method="_on_OnGroundTimer_timeout"]

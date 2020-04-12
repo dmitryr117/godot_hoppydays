@@ -12,6 +12,8 @@ signal animate
 var motion = Vector2(0, 0)
 var move_left = false
 var move_right = false
+var jump_was_pressed = false
+var was_on_floor = false
 
 func _ready():
 	pass
@@ -32,11 +34,25 @@ func apply_gravity():
 		motion.y += GRAVITY
 		
 func jump():
-	if Input.is_action_just_pressed('jump') and is_on_floor():
+	if Input.is_action_just_pressed('jump'):
+		$JumpTimer.start()
+		jump_was_pressed = true
+	if is_on_floor():
+		$OnGroundTimer.start()
+		was_on_floor = true
+	if jump_was_pressed and was_on_floor:
+		jump_was_pressed = false
+		was_on_floor = false
 		motion.y -= JUMP_SPEED
 		#$AudioStreamPlayer.stream = load("res://SFX/jump1.ogg")
 		$JumpSFX.play()
-		
+
+func _on_JumpTimer_timeout():
+	jump_was_pressed = false
+
+func _on_OnGroundTimer_timeout():
+	was_on_floor = false
+
 func move():
 	move_left = Input.is_action_pressed("left")
 	move_right = Input.is_action_pressed("right")
@@ -66,18 +82,4 @@ func boost():
 	yield(get_tree(), "idle_frame")
 	$JumpSFX.play()
 	motion.y = -JUMP_SPEED * BOOST_MULTIPLIER
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
